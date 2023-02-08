@@ -10,4 +10,4 @@ python3
 ### Authors
 
 -  Umar Muhammed @muhammedumarALX
--  Racheal Aina @JO-YO
+-  Racheal Aina @JO-YE
