@@ -10,11 +10,11 @@ class FileStorage:
 
     def all(self):
         """Instance method to return dictionary"""
-        return __object
+        return self.__objects
 
     def new(self, obj):
         """Instance method setting in an object with key"""
-        key = f"{self.__class__.__name__}.{self.id}"
+        key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[key] = obj
 
     def save(self):
