@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import json 
-
+import json
+import models
 
 
 class FileStorage:
@@ -28,6 +28,10 @@ class FileStorage:
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 obj_dict = json.load(f)
-                obj_dict = eval(self.__class__.__name__(obj_dict))
-        except:
-            pass
+                for ob in obj_dict.values():
+                    cls_name = ob['__class__']
+                    del ob['__class__']
+                    self.new(eval(cls_name)(**ob))
+
+        except FileNotFoundError:
+            return
