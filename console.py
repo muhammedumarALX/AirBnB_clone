@@ -31,7 +31,8 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.__classes:
             print("** class doesn't exist **")
         else:
-            new_obj = eval(f"{args[0]}")()
+            class_name = args[0]
+            new_obj = eval(class_name + "()")
             print(new_obj.id)
 
 if __name__ == '__main__':

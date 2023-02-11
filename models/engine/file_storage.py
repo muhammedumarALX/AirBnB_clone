@@ -4,7 +4,7 @@ Class that serializes instances to a JSON file
 and deserializes JSON file to instances
 '''
 import json
-import models
+from models import base_model
 
 
 class FileStorage:
@@ -18,7 +18,7 @@ class FileStorage:
 
     def new(self, obj):
         """Instance method setting in an object with key"""
-        key = f"{obj.__class__.__name__}.{obj.id}"
+        key = obj.__class__.__name__ + "." + str(obj.id)
         self.__objects[key] = obj
 
     def save(self):
@@ -35,7 +35,7 @@ class FileStorage:
                 for ob in obj_dict.values():
                     cls_name = ob['__class__']
                     del ob['__class__']
-                    self.new(eval(cls_name)(**ob))
+                    self.new(eval(f"base_model.{cls_name}")(**ob))
 
         except FileNotFoundError:
             return
