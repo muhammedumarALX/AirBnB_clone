@@ -4,7 +4,7 @@ Parent class
 '''
 import uuid
 from datetime import datetime
-import  models
+import models
 
 
 class BaseModel():
@@ -28,8 +28,7 @@ class BaseModel():
     def __str__(self):
         '''returns class name, id and attribute dictionary
         '''
-        return "[" + self.__class__.__name__ + "] (" + self.id + ") " + \
-                str(self.__dict__)
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         '''updates last update time
