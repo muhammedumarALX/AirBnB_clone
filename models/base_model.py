@@ -1,18 +1,20 @@
 #!/usr/bin/python3
-'''
-Parent class
-'''
 import uuid
 from datetime import datetime
-import models
+"""This module defines a class `BaseModel`"""
 
 
 class BaseModel():
-    '''Defines all common attributes/methods for other classes
-    '''
+    """defines all common attributes/methods for other class"""
+
     def __init__(self, *args, **kwargs):
-        '''Initializes all attributes
+        '''Initializes a new instance of BaseModel
+
+        Args:
+            *args (any): unsused
+            **kwargs (dict): key & value pair of attributes
         '''
+
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "update_at" or key == "created_at":
@@ -31,13 +33,13 @@ class BaseModel():
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        '''updates last update time
+        '''updates last update time `updated_at`
         '''
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        '''creates a new dictionary, adding a key and returning
+        '''`__dicy__`creates a new dictionary, adding a key and returning
         datetimes converted to strings
         '''
         dict_copy = self.__dict__.copy()
