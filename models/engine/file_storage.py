@@ -35,7 +35,7 @@ class FileStorage:
                 for ob in obj_dict.values():
                     cls_name = ob['__class__']
                     del ob['__class__']
-                    self.new(eval(f"base_model.{cls_name}")(**ob))
+                    self.new(eval(cls_name)(**ob))
 
         except FileNotFoundError:
             return
