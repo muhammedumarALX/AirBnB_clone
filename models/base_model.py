@@ -37,10 +37,10 @@ class BaseModel():
         '''updates last update time `updated_at`
         '''
         self.updated_at = datetime.now()
-       models.storage.save()
+        models.storage.save()
 
     def to_dict(self):
-        '''`__dicy__`creates a new dictionary, adding a key and returning
+        '''`__dict__`creates a new dictionary, adding a key and returning
         datetimes converted to strings
         '''
         dict_copy = self.__dict__.copy()
