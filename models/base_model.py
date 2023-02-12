@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
+import model
 """This module defines a class `BaseModel`"""
 
 
@@ -36,7 +37,7 @@ class BaseModel():
         '''updates last update time `updated_at`
         '''
         self.updated_at = datetime.now()
-        models.storage.save()
+       models.storage.save()
 
     def to_dict(self):
         '''`__dicy__`creates a new dictionary, adding a key and returning
