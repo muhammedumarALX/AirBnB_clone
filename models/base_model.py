@@ -6,11 +6,6 @@ import uuid
 from datetime import datetime
 import  models
 
-<<<<<<< HEAD
-
-class BaseModel():
-=======
->>>>>>> 8f502419307736fbea4df5e962909c53322dcd59
 
 class BaseModel():
     '''Defines all common attributes/methods for other classes
@@ -20,13 +15,7 @@ class BaseModel():
         '''
         if len(kwargs) != 0:
             for key, value in kwargs.items():
-<<<<<<< HEAD
-                if key == '__class__':
-                    continue
-                elif key == 'updated_at' or key == 'created_at':
-=======
-                if key == 'updated_at' or key == 'created_at':
->>>>>>> 8f502419307736fbea4df5e962909c53322dcd59
+                if key == "update_at" or key == "created_at":
                     self.__dict__[key] = datetime.fromisoformat(value)
                 else:
                     self.__dict__[key] = value
