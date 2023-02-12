@@ -2,13 +2,14 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel():
 
     def __init__(self, *args, **kwargs):
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == '__class__':
-                    continue;
+                    continue
                 elif key == 'updated_at' or key == 'created_at':
                     self.__dict__[key] = datetime.fromisoformat(value)
                 else:
