@@ -3,6 +3,7 @@
 import cmd
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     '''Command line-interpreter.'''
     prompt = '(hbnb) '
@@ -34,6 +35,7 @@ class HBNBCommand(cmd.Cmd):
             class_name = args[0]
             new_obj = eval(class_name + "()")
             print(new_obj.id)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
