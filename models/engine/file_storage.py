@@ -1,6 +1,10 @@
 #!/usr/bin/python3
-import json 
-
+'''
+Class that serializes instances to a JSON file
+and deserializes JSON file to instances
+'''
+import json
+from models import base_model
 
 
 class FileStorage:
@@ -10,11 +14,11 @@ class FileStorage:
 
     def all(self):
         """Instance method to return dictionary"""
-        return __object
+        return self.__objects
 
     def new(self, obj):
         """Instance method setting in an object with key"""
-        key = f"{self.__class__.__name__}.{self.id}"
+        key = obj.__class__.__name__ + "." + str(obj.id)
         self.__objects[key] = obj
 
     def save(self):
@@ -28,6 +32,10 @@ class FileStorage:
         try:
             with open(self.__file_path, "r", encoding="utf-8") as f:
                 obj_dict = json.load(f)
-                obj_dict = eval(self.__class__.__name__(obj_dict))
-        except:
-            pass
+                for ob in obj_dict.values():
+                    cls_name = ob['__class__']
+                    del ob['__class__']
+                    self.new(eval(f"base_model.{cls_name}")(**ob))
+
+        except FileNotFoundError:
+            return
